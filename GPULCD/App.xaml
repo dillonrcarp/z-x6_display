@@ -1,0 +1,20 @@
+<Application x:Class="GPULCD.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="Views/MainWindow.xaml"
+             ShutdownMode="OnExplicitShutdown">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!-- Dark theme colors -->
+            <SolidColorBrush x:Key="BgPrimary" Color="#1A1A2E"/>
+            <SolidColorBrush x:Key="BgSecondary" Color="#16213E"/>
+            <SolidColorBrush x:Key="BgTertiary" Color="#0F3460"/>
+            <SolidColorBrush x:Key="AccentBlue" Color="#41A5FF"/>
+            <SolidColorBrush x:Key="AccentRed" Color="#FF6450"/>
+            <SolidColorBrush x:Key="AccentGreen" Color="#50C878"/>
+            <SolidColorBrush x:Key="TextPrimary" Color="#E0E0EA"/>
+            <SolidColorBrush x:Key="TextSecondary" Color="#8890A5"/>
+            <SolidColorBrush x:Key="TextMuted" Color="#505570"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
