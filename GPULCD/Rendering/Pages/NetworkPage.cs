@@ -44,12 +44,19 @@ public class NetworkPage : IPage
         _pingTarget = pingTarget;
     }
 
+    private int _updateCount;
+
     public void Update()
     {
         try
         {
             var iface = GetActiveInterface();
-            if (iface == null) return;
+            if (iface == null)
+            {
+                if (_updateCount++ < 5)
+                    Debug.WriteLine($"NetworkPage: no active interface found (attempt {_updateCount})");
+                return;
+            }
 
             _interfaceName = iface.Name;
             var ipProps = iface.GetIPProperties();

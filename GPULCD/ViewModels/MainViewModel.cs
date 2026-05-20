@@ -14,7 +14,7 @@ namespace GPULCD.ViewModels;
 public class MainViewModel : ViewModelBase, IDisposable
 {
     private readonly LcdService _lcd;
-    private readonly HwInfoSensorService _sensors;
+    private readonly ISensorService _sensors;
     private readonly TrayService _tray;
     private readonly FrameRenderer _renderer;
     private readonly AppSettings _settings;
@@ -66,7 +66,9 @@ public class MainViewModel : ViewModelBase, IDisposable
     {
         _settings = AppSettings.Load();
         _lcd = new LcdService();
-        _sensors = new HwInfoSensorService();
+        _sensors = _settings.SensorProvider.Equals("hwinfo", StringComparison.OrdinalIgnoreCase)
+            ? new HwInfoSensorService()
+            : new LibreHardwareMonitorSensorService();
         _tray = new TrayService(onExit: () =>
         {
             Stop();

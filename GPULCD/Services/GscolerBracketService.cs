@@ -27,7 +27,7 @@ public class GscolerBracketService : IDisposable
 
     private SerialPort? _serial;
     private readonly object _serialLock = new();
-    private readonly HwInfoSensorService _sensors;
+    private readonly ISensorService _sensors;
     private readonly AppSettings _settings;
     private System.Threading.Timer? _sendTimer;
     private int _sequence; // 0-7 cycle
@@ -37,7 +37,7 @@ public class GscolerBracketService : IDisposable
     public ConnectionState State { get; private set; } = ConnectionState.Disconnected;
     public event EventHandler<ConnectionState>? StateChanged;
 
-    public GscolerBracketService(HwInfoSensorService sensors, AppSettings settings)
+    public GscolerBracketService(ISensorService sensors, AppSettings settings)
     {
         _sensors = sensors;
         _settings = settings;

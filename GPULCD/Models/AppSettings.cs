@@ -13,18 +13,19 @@ public class AppSettings
     public bool AutoStart { get; set; } = false;
     public int UpdateIntervalMs { get; set; } = 500;
     public string ThemeName { get; set; } = "default";
+    public string SensorProvider { get; set; } = "lhm"; // "lhm" or "hwinfo"
 
-    // Sensor slot mappings — maps display slot to HWiNFO sensor name
+    // Sensor slot mappings — maps display slot to sensor name
     public Dictionary<string, string> SensorMappings { get; set; } = new()
     {
-        ["CpuTemp"] = "CPU Package",
-        ["CpuUsage"] = "Total CPU Usage",
-        ["GpuTemp"] = "GPU Temperature",
-        ["GpuUsage"] = "GPU Core Load",
-        ["RamUsage"] = "Physical Memory Load",
-        ["CpuFan"] = "Nuvoton NCT6687D): CPU",
-        ["GpuFan"] = "GPU Fan1",
-        ["CaseFan"] = "System 3"
+        ["CpuTemp"] = "CPU Package (Temperature)",
+        ["CpuUsage"] = "CPU Total",
+        ["GpuTemp"] = "GPU Core (Temperature)",
+        ["GpuUsage"] = "D3D 3D",
+        ["RamUsage"] = "Memory (Load)",
+        ["CpuFan"] = "Nuvoton NCT6687D: CPU Fan",
+        ["GpuFan"] = "GPU Fan (Fan)",
+        ["CaseFan"] = "Nuvoton NCT6687D: System Fan #3"
     };
 
     private static readonly string ConfigDir = Path.Combine(
